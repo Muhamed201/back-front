@@ -1,0 +1,106 @@
+
+$primary-color: #3498db;      
+$border-radius: 12px;          
+$box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+$spacing-unit: 16px;           
+
+
+@mixin responsive-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: $spacing-unit;
+}
+
+
+.product-card {
+    max-width: 350px;
+    background: white;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+   
+    &__image {
+        overflow: hidden;
+        height: 250px;
+        
+        img {
+            @include responsive-image;  // Использование миксина
+            height: 100%;
+        }
+    }
+
+    
+    &__title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: $spacing-unit $spacing-unit $spacing-unit/2;
+        color: #333;
+    }
+
+    &__description {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin: 0 $spacing-unit $spacing-unit;
+        color: #666;
+    }
+
+    
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: $spacing-unit;
+        background: #f8f9fa;
+    }
+
+    &__price {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: $primary-color;  
+    }
+    
+    &__button {
+        background-color: $primary-color;  
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: $border-radius;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+       
+        &:hover {
+            background-color: darken($primary-color, 15%);
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+    }
+
+}
